@@ -17,7 +17,7 @@ macOS에서는 `Option` 키가 `Alt`와 동일합니다. 기본 단축키는 `Al
 
 ### 마크다운 복사
 
-<video controls src="media/demo-markdown.mov" title="markdown"></video>
+![markdown demo](media/demo-markdown.gif)
 
 선택 영역의 텍스트 콘텐츠를 마크다운으로 변환하여 클립보드에 복사합니다. 웹페이지의 구조에 따라 제목, 리스트, 링크 등이 마크다운 문법으로 변환됩니다.
 
@@ -26,7 +26,7 @@ macOS에서는 `Option` 키가 `Alt`와 동일합니다. 기본 단축키는 `Al
 
 ### 이미지 캡처
 
-<video controls src="media/demo-image.mov" title="image"></video>
+![image demo](media/demo-image.gif)
 
 선택 영역을 PNG 이미지로 캡처하면 팝업 오버레이가 뜨고, 다운로드하거나 클립보드에 복사할 수 있습니다. 캡처된 이미지는 선택 영역의 시각적 표현으로, 텍스트뿐만 아니라 스타일과 레이아웃도 포함됩니다.
 

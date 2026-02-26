@@ -17,7 +17,7 @@ Note: On macOS, `Option` is the same key as `Alt`. The default shortcuts use `Al
 
 ### Copy as Markdown
 
-<video controls src="media/demo-markdown.mov" title="markdown"></video>
+![markdown demo](media/demo-markdown.gif)
 
 Converts the selected text into Markdown and copies it to the clipboard. Depending on page structure, headings, lists, and links are converted to Markdown syntax.
 
@@ -25,7 +25,7 @@ The video shows the default copy command and the `Alt+Shift+D` shortcut. When us
 
 ### Capture as Image
 
-<video controls src="media/demo-image.mov" title="image"></video>
+![image demo](media/demo-image.gif)
 
 Captures the selection as a PNG image and opens a popup overlay where you can download or copy the image. The capture includes the visual styling and layout, not just text.
 
