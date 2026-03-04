@@ -23,10 +23,16 @@ type SelectionInfo = {
 
 const CONTENT_SCRIPT_FILE = 'content.js';
 
-async function getActiveTabId(): Promise<number | null> {
+type ActiveTabInfo = {
+  tabId: number;
+  windowId: number;
+};
+
+async function getActiveTabInfo(): Promise<ActiveTabInfo | null> {
   const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
   const tab = tabs[0];
-  return tab?.id ?? null;
+  if (tab?.id == null || tab.windowId == null) return null;
+  return { tabId: tab.id, windowId: tab.windowId };
 }
 
 async function ensureContentScript(tabId: number): Promise<void> {
@@ -55,7 +61,7 @@ async function handleCopyMarkdown(tabId: number) {
   await sendMessage(tabId, { type: 'copy_markdown' });
 }
 
-async function handleCaptureImage(tabId: number) {
+async function handleCaptureImage(tabId: number, windowId: number) {
   const selection = await sendMessage<SelectionInfo>(tabId, { type: 'get_selection' });
   if (!selection || !selection.hasSelection || !selection.rect || !selection.dpr) {
     await sendMessage(tabId, { type: 'toast', text: 'No selection' });
@@ -69,22 +75,6 @@ async function handleCaptureImage(tabId: number) {
 
   await sendMessage(tabId, { type: 'clear_selection' });
   await new Promise((resolve) => setTimeout(resolve, 60));
-
-  let windowId: number | null = null;
-  try {
-    const tab = await chrome.tabs.get(tabId);
-    windowId = tab.windowId ?? null;
-  } catch {
-    windowId = null;
-  }
-
-  if (windowId === null) {
-    await sendMessage(tabId, {
-      type: 'toast',
-      text: 'Capture failed (no window)'
-    });
-    return;
-  }
 
   chrome.tabs.captureVisibleTab(windowId, { format: 'png' }, async (dataUrl) => {
     if (chrome.runtime.lastError || !dataUrl) {
@@ -107,8 +97,9 @@ async function handleCaptureImage(tabId: number) {
 
 
 chrome.commands.onCommand.addListener(async (command) => {
-  const tabId = await getActiveTabId();
-  if (!tabId) return;
+  const activeTab = await getActiveTabInfo();
+  if (!activeTab) return;
+  const { tabId, windowId } = activeTab;
 
   try {
     await ensureContentScript(tabId);
@@ -121,6 +112,6 @@ chrome.commands.onCommand.addListener(async (command) => {
   }
 
   if (command === 'capture_image') {
-    await handleCaptureImage(tabId);
+    await handleCaptureImage(tabId, windowId);
   }
 });

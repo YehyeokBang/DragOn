@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "DragOn",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drag On! drag to select, then copy as Markdown or capture as PNG.",
   "action": {
     "default_title": "DragOn",
@@ -25,7 +25,6 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "tabs",
     "commands",
     "clipboardWrite"
   ],
