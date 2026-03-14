@@ -6,6 +6,8 @@ English | [한국어](README.ko.md)
 
 DragOn is a Chrome extension that captures your current text selection as Markdown or as a cropped image. It is designed for quickly archiving web content like job descriptions before links expire.
 
+[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/miaghigponialmpepeeahhbcmhifgaim?utm_source=item-share-cb)
+
 ## What You Can Do
 
 - `Alt+Shift+D` copies the current selection as Markdown

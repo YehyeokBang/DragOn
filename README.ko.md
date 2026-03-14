@@ -6,6 +6,8 @@
 
 DragOn은 웹페이지에서 선택한 텍스트를 Markdown으로 복사하거나, 선택 영역을 이미지로 캡처하는 크롬 확장입니다. 링크가 사라지기 전에 JD 등 원문을 보관하고, 노션에 구조화해서 붙여넣는 용도로 설계되었습니다.
 
+[크롬 웹 스토어에서 설치하기](https://chromewebstore.google.com/detail/miaghigponialmpepeeahhbcmhifgaim?utm_source=item-share-cb)
+
 ## 할 수 있는 일
 
 - `Alt+Shift+D`: 선택 영역을 Markdown으로 복사
